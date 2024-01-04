@@ -1,6 +1,6 @@
 package com.movie.user.management.service;
 
-import com.movie.user.management.entity.User;
+import com.movie.user.management.entity.UserEntity;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -25,12 +25,12 @@ public class SecurityService implements UserDetailsService {
      */
     @Override
     public UserDetails loadUserByUsername(String userId) throws UsernameNotFoundException {
-        Optional<User> findOne = loginService.findOne(userId);
-        User user = findOne.orElseThrow(() -> new UsernameNotFoundException("등록되지 않은 사용자입니다."));
+        Optional<UserEntity> findOne = loginService.findOne(userId);
+        UserEntity userEntity = findOne.orElseThrow(() -> new UsernameNotFoundException("등록되지 않은 사용자입니다."));
 
         return org.springframework.security.core.userdetails.User.builder()
-                .username(user.getLoginId())
-                .password(passwordEncoder.encode(user.getLoginPw()))
+                .username(userEntity.getLoginId())
+                .password(passwordEncoder.encode(userEntity.getLoginPw()))
                 .build();
     }
 }

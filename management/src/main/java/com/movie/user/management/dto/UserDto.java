@@ -2,10 +2,8 @@ package com.movie.user.management.dto;
 
 import lombok.Builder;
 import lombok.Data;
-import lombok.Getter;
 
-@Getter
-@Builder
+@Data
 public class UserDto {
     private String loginId;
 
@@ -15,10 +13,6 @@ public class UserDto {
 
     private String birth;
 
-    UserDto(String loginId, String loginPw, String name, String birth) {
-        this.loginId = loginId;
-        this.loginPw = loginPw;
-        this.name = name;
-        this.birth = birth;
+    UserDto() {
     }
 }

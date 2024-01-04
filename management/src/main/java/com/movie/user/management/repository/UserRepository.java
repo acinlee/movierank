@@ -1,15 +1,15 @@
 package com.movie.user.management.repository;
 
-import com.movie.user.management.entity.User;
+import com.movie.user.management.entity.UserEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 import java.util.Optional;
 
 @Repository
-public interface UserRepository extends JpaRepository<User, Long> {
+public interface UserRepository extends JpaRepository<UserEntity, Long> {
 
-    Optional<User> findByLoginId(String userId);
+    Optional<UserEntity> findByLoginId(String loginId);
 
-    User save(User user);
+    UserEntity save(UserEntity userEntity);
 }
